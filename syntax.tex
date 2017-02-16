@@ -61,10 +61,6 @@ The PMF package includes a new primitve data type, the \primtype{ModelClass}.
 
 \subsubsection{Type \fixttspace\primtypeNC{ModelClass}}
 \label{primtype-modelclass}
-The \primtype{ModelClass} primitive data type is used in the deefinition of the
-\RuleMetaData class. \primtype{ModelClass} is derived from type
-\primtype{string} and its values are restricted to being one of the
-possibilities listed in \tab{primtype-modelclass-values}.
 
 \begin{table}
 	\begin{tabular}{|l|}
@@ -89,8 +85,13 @@ possibilities listed in \tab{primtype-modelclass-values}.
 	\label{primtype-modelclass-values}
 \end{table}
 
+The \primtype{ModelClass} primitive data type is used in the deefinition of the
+\RuleMetaData class. \primtype{ModelClass} is derived from type
+\primtype{string} and its values are restricted to being one of the
+possibilities listed in \tab{primtype-modelclass-values}.
+
 Attributes of type \primtype{ModelClass} cannot take on any other values. The
-meaning of these values is discussed in the context of the \RuleMetaData class'
+meaning of these values is discussed in the context of the \RuleMetaData class
 definition in \sec{rulemetadata-class}.
 
 \subsection{Meta data classes}
@@ -325,7 +326,7 @@ diagram for the extension.
 
 \begin{figure}
 	\includegraphics[scale=0.8]{img/compartment_uml}
-	\caption{Class diagram of extended Compartment}
+	\caption{Class diagram of extended \Compartment}
 	\label{compartment_uml}
 \end{figure}
 
@@ -351,8 +352,8 @@ diagram for the extension.
 \end{example}
 
 \begin{figure}
-	\includegraphics[scale=0.7]{img/model_uml}
-	\caption{Class diagram of extended Model}
+	\includegraphics[scale=0.6]{img/model_uml}
+	\caption{Class diagram of extended \Model}
 	\label{model_uml}
 \end{figure}
 
@@ -372,7 +373,7 @@ The \Parameter class is extended with one \ListOfCorrelations and one optional
 
 \begin{figure}
 	\includegraphics[scale=0.7]{img/parameter_uml}
-	\caption{Class diagram of extended Parameter}
+	\caption{Class diagram of extended \Parameter}
 	\label{parameter_uml}
 \end{figure}
 
@@ -393,7 +394,7 @@ The \Rule class is extended with a \ListOfReferences and one optional
 
 \begin{figure}
 	\includegraphics[scale=0.7]{img/rule_uml}
-	\caption{Class diagram of extended Rule}
+	\caption{Class diagram of extended \Rule}
 	\label{rule_uml}
 \end{figure}
 
@@ -410,7 +411,7 @@ The \Species class is extended with one optional \SpeciesMetaData.
 
 \begin{figure}
 	\includegraphics[scale=0.7]{img/species_uml}
-	\caption{Class diagram of extended Species}
+	\caption{Class diagram of extended \Species}
 	\label{species_uml}
 \end{figure}
 
@@ -426,6 +427,6 @@ The \UnitTransformation class is extended with an optional \UnitTransformation.
 
 \begin{figure}
 	\includegraphics[scale=0.7]{img/unitdefinition_uml}
-	\caption{Class diagram of extended UnitDefinition}
+	\caption{Class diagram of extended \UnitDefinition}
 	\label{unitdefinition_uml}
 \end{figure}
