@@ -107,9 +107,15 @@ meta data. The newly introduced meta data classes are:
 
 
 \subsubsection{The \class{CompartmentMetaData} class}
+\begin{figure}
+	\includegraphics[scale=0.8]{img/CompartmentMetaData}
+	\caption{Class diagram of CompartmentMetaData}
+	\label{CompartmentMetaData}
+\end{figure}
+
 \label{compartmentmetadata-class}
 The \CompartmentMetaData further describes a Compartment with two attributes:
-\token{source} and \token{detail}. \fig{compartment_uml} provides the UML
+\token{source} and \token{detail}. \fig{CompartmentMetaData} provides the UML
 diagram of its definition.
 
 \paragraph{The source attribute}
@@ -122,11 +128,17 @@ the \Compartment object.
 
 
 \subsubsection{The \class{ParameterMetaData} class}
+\begin{figure}
+	\includegraphics[scale=0.8]{img/ParameterMetaData}
+	\caption{Class diagram of ParameterMetaData}
+	\label{ParameterMetaData}
+\end{figure}
+
 \label{parametermetadata-class}
 The \ParameterMetaData further describes a Parameter with the optional
 attributes: \token{p}, \token{t}, \token{error}, \token{description},
-\token{min} and \token{max}. \fig{parameter_uml} provides the UML diagram of its
-definition.
+\token{min} and \token{max}. \fig{ParameterMetaData} provides the UML diagram of
+its definition.
 
 \paragraph{The \token{p} attribute}
 The optional attribute \token{p} contains a \primtype{double} with the partition
@@ -156,25 +168,37 @@ maximum value of the parameter.
 
 
 \subsubsection{The \class{RuleMetaData} class}
+\begin{figure}
+	\includegraphics[scale=0.8]{img/RuleMetaData}
+	\caption{Class diagram of RuleMetaData}
+	\label{RuleMetaData}
+\end{figure}
+
 \label{rulemetadata-class}
 The \RuleMetaData further describes a \Rule with the optional attributes:
-\token{formulaName}, \token{pmmLabId} and \token{modelClass}. \fig{rule_uml}
+\token{formulaName}, \token{pmmLabId} and \token{modelClass}. \fig{RuleMetaData}
 provides the UML diagram of its definition.
 
 \paragraph{The \token{formulaName} attribute}
 The formulaName attribute
 
 \paragraph{The \token{pmmLabId} attribute}
-Optional attriubte of type \primtype{integer} with the PmmLab id.
+Optional attribute of type \primtype{integer} with the PmmLab id.
 
 \paragraph{The \token{modelClass} attribute}
 Optional attribute of type ModelClass with the class of the model.
 
 
 \subsubsection{The \class{SpeciesMetaData} class}
+\begin{figure}
+	\includegraphics[scale=0.8]{img/SpeciesMetaData}
+	\caption{Class diagram of SpeciesMetaData}
+	\label{SpeciesMetaData}
+\end{figure}
+
 \label{speciesmetadata-class}
 The \SpeciesMetaData further describes a \Species with the optional attributes:
-\token{source}, \token{detail} and \token{description}. \fig{species_uml}
+\token{source}, \token{detail} and \token{description}. \fig{SpeciesMetaData}
 provides the UML diagram of its definition.
 
 \paragraph{The \token{source} attribute}
@@ -207,10 +231,16 @@ The \Pmf package also includes a number of new elements.
 \end{itemize}
 
 \subsubsection{The \class{Correlation} class}
+\begin{figure}
+	\includegraphics[scale=0.8]{img/Correlation}
+	\caption{Class diagram of Correlation}
+	\label{Correlation}
+\end{figure}	
+
 \label{correlation-class}
 The \Correlation expresses the existing dependence between the current\
 \Parameter and a second \Parameter. It involves two attributes: \token{name}
-and \token{value}. \fig{compartment_uml} provides its UML diagram.
+and \token{value}. \fig{Correlation} provides its UML diagram.
 
 \paragraph{The name attribute}
 Mandatory attribute with the name of the second parameter.
@@ -219,14 +249,27 @@ Mandatory attribute with the name of the second parameter.
 Mandatory attribute with the value of the dependence with the second parameter.
 
 \subsubsection{The \class{DataSource} class}
+\begin{figure}
+	\includegraphics[scale=0.8]{img/DataSource}
+	\caption{Class diagram of DataSource}
+	\label{DataSource}
+\end{figure}
+
 \label{datasource-class}
 The \DataSource is used to link to a separated file with numerical data
-associated to the model. \fig{model_uml} provides its UML diagram.
+associated to the model. \fig{DataSource} provides its UML diagram.
 
 \subsubsection{The \class{ModelVariable} class}
+\begin{figure}
+	\includegraphics[scale=0.8]{img/ModelVariable}
+	\caption{Class diagram of ModelVariable}
+	\label{ModelVariable}
+\end{figure}
+
 \label{modelvariable-class}
 The \ModelVariable is used to describe a variable of the model such as
-temperature, water activity, pH, etc. \fig{model_uml} provides its UML diagram.
+temperature, water activity, pH, etc. \fig{ModelVariable} provides its UML
+diagram.
 
 \subsubsection{The \class{PrimaryModel} class}
 \label{primarymodel-class}
@@ -234,11 +277,18 @@ The \PrimaryModel is used to link to a meta data file describing a primary model
 with current model. \fig{model_uml} provides its UML diagram.
 
 \subsubsection{The \class{Reference} class}
+\begin{figure}
+	\includegraphics[scale=0.8]{img/Reference}
+	\caption{Class diagram of Reference}
+	\label{Reference}
+\end{figure}
+
 \label{reference-class}
 The \Reference class is used to annotate a literature reference associated to
 the model. It involves the following attributes. All the attributes of the
 \Reference class are optional. The attributes are encoded using a subset of the
 RIS specification format as described in \tab{reference-class-attributes}.
+\fig{Reference} provides its UML diagram.
 
 \begin{table}
 	\begin{tabular}{|l|l|}
@@ -271,10 +321,16 @@ RIS specification format as described in \tab{reference-class-attributes}.
 \end{example}
 
 \subsubsection{The \class{UnitTransformation} class}
+\begin{figure}
+	\includegraphics[scale=0.8]{img/UnitTransformation}
+	\caption{Class diagram of UnitTransformation}
+	\label{UnitTransformation}
+\end{figure}
+
 \label{unittransformation-class}
 The \UnitTransformation further describes a \UnitDefinition with the optional
 attribute transformation, of type \primtype{string}, which holds the
-transformation of the \UnitDefinition. \fig{unitdefinition_uml} provides the
+transformation of the \UnitDefinition. \fig{UnitTransformation} provides the
 UML diagram of its defintion. \fig{unitdefinition_uml} sports an example of
 \UnitTransformation.
 
