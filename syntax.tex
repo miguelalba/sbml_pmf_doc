@@ -44,7 +44,7 @@ the SBML document. For the PMF package, the value of this attribute must be
 \val{false}, because the use of the PMF package cannot change the mathematical
 meaning of a model.
 
-The following fragmen illustrates the beginning of a typical SBML model using
+The following fragment illustrates the beginning of a typical SBML model using
 \sbmlthreecore and this version of the PMF package.
 
 \begin{example}
@@ -62,7 +62,7 @@ The PMF package includes a new primitve data type, the \primtype{ModelClass}.
 \subsubsection{Type \fixttspace\primtypeNC{ModelClass}}
 \label{primtype-modelclass}
 
-\begin{table}
+\begin{table}[h]
 	\begin{tabular}{|l|}
 		\hline
 		\val{unknown} \\ \hline
@@ -100,6 +100,7 @@ the addition of meta data classes. These classes act as place holders for extra
 meta data. The newly introduced meta data classes are:
 \begin{itemize}
 	\item \CompartmentMetaData
+	\item \ModelMetaData
 	\item \ParameterMetaData
 	\item \RuleMetaData
 	\item \SpeciesMetaData
@@ -107,7 +108,7 @@ meta data. The newly introduced meta data classes are:
 
 
 \subsubsection{The \class{CompartmentMetaData} class}
-\begin{figure}
+\begin{figure}[h]
 	\includegraphics[scale=0.8]{img/CompartmentMetaData}
 	\caption{Class diagram of CompartmentMetaData}
 	\label{CompartmentMetaData}
@@ -119,16 +120,51 @@ The \CompartmentMetaData further describes a Compartment with two attributes:
 diagram of its definition.
 
 \paragraph{The source attribute}
-The optional attribute \token{source} contains a signed integer refering to the
-PMF matrix vocabulary.
+The optional attribute \token{source} contains a signed \primtype{integer}
+refering to the PMF matrix vocabulary.
 
 \paragraph{The detail attribute}
-The optional attribute \token{detail} contains a string with extra details of
-the \Compartment object.
+The optional attribute \token{detail} contains a \primtype{string} with extra
+details of the \Compartment object.
 
+\subsubsection{The \class{ModelMetaData} class}
+\label{modelmetadata-class}
+
+\begin{figure}[h]
+	\includegraphics[scale=0.8]{img/ModelMetaData}
+	\caption{Class diagram of ModelMetaData}
+	\label{ModelMetaData}
+\end{figure}
+
+The \ModelMetaData further describes a Model with uncertainty measures.
+\fig{ModelMetaData} provides the UML diagram of its definition.
+
+\paragraph{The rSquared attribute}
+The optional attribute \token{rSquared} contains a \primtype{double} with the R
+Squared value.
+
+\paragraph{The rootMeanSquare attribute}
+The optional attribute \token{rootMeanSquare} contains a \primtype{double} with
+the Root Mean Square value.
+
+\paragraph{The sumOfSquaredErrors attribute}
+The optional attribute \token{sumOfSquaredErrors} contains a \primtype{double}
+with the Sum of Squared Errors, SSE, value.
+
+\paragraph{The akaikeInformationCriterion attribute}
+The optional attribute, \token{akaikeInformationCriterion} contains a
+\primtype{double} with the Akaike Information Criterion value.
+
+\paragraph{The bayesianInformationCriterion attribute}
+The optional attribute, \token{bayesianInformationCriterion} contains a
+\primtype{double} with the Bayesian Information Criterion value.
+
+\paragraph{The degreesOfFreedom attribute}
+The optional attribute, token{degreesOfFreedom} contains a \primtype{integer}
+with the degrees of freedom.
 
 \subsubsection{The \class{ParameterMetaData} class}
-\begin{figure}
+\begin{figure}[h]
 	\includegraphics[scale=0.8]{img/ParameterMetaData}
 	\caption{Class diagram of ParameterMetaData}
 	\label{ParameterMetaData}
@@ -164,11 +200,11 @@ minimum value of the parameter.
 The optional attribute \token{max} contains a \primtype{double} with the
 maximum value of the parameter.
 
-\fig{model_uml} features an example of \ParameterMetaData.
+\fig{ParameterMetaData} features an example of \ParameterMetaData.
 
 
 \subsubsection{The \class{RuleMetaData} class}
-\begin{figure}
+\begin{figure}[h]
 	\includegraphics[scale=0.8]{img/RuleMetaData}
 	\caption{Class diagram of RuleMetaData}
 	\label{RuleMetaData}
@@ -180,17 +216,17 @@ The \RuleMetaData further describes a \Rule with the optional attributes:
 provides the UML diagram of its definition.
 
 \paragraph{The \token{formulaName} attribute}
-The formulaName attribute
+Optional attribute of type \primtype{string} with the formula name.
 
 \paragraph{The \token{pmmLabId} attribute}
 Optional attribute of type \primtype{integer} with the PmmLab id.
 
 \paragraph{The \token{modelClass} attribute}
-Optional attribute of type ModelClass with the class of the model.
+Optional attribute of type \primtype{ModelClass} with the class of the model.
 
 
 \subsubsection{The \class{SpeciesMetaData} class}
-\begin{figure}
+\begin{figure}[h]
 	\includegraphics[scale=0.8]{img/SpeciesMetaData}
 	\caption{Class diagram of SpeciesMetaData}
 	\label{SpeciesMetaData}
@@ -231,7 +267,7 @@ The \Pmf package also includes a number of new elements.
 \end{itemize}
 
 \subsubsection{The \class{Correlation} class}
-\begin{figure}
+\begin{figure}[h]
 	\includegraphics[scale=0.8]{img/Correlation}
 	\caption{Class diagram of Correlation}
 	\label{Correlation}
@@ -243,13 +279,15 @@ The \Correlation expresses the existing dependence between the current\
 and \token{value}. \fig{Correlation} provides its UML diagram.
 
 \paragraph{The name attribute}
-Mandatory attribute with the name of the second parameter.
+Mandatory attribute of type \primtype{string} with the name of the second
+parameter.
 
 \paragraph{The value attribute}
-Mandatory attribute with the value of the dependence with the second parameter.
+Mandatory attribute of type \primtype{double} with the value of the dependence
+with the second parameter.
 
 \subsubsection{The \class{DataSource} class}
-\begin{figure}
+\begin{figure}[h]
 	\includegraphics[scale=0.8]{img/DataSource}
 	\caption{Class diagram of DataSource}
 	\label{DataSource}
@@ -260,7 +298,7 @@ The \DataSource is used to link to a separated file with numerical data
 associated to the model. \fig{DataSource} provides its UML diagram.
 
 \subsubsection{The \class{ModelVariable} class}
-\begin{figure}
+\begin{figure}[h]
 	\includegraphics[scale=0.8]{img/ModelVariable}
 	\caption{Class diagram of ModelVariable}
 	\label{ModelVariable}
@@ -273,11 +311,18 @@ diagram.
 
 \subsubsection{The \class{PrimaryModel} class}
 \label{primarymodel-class}
+
+\begin{figure}[h]
+	\includegraphics[scale=0.8]{img/PrimaryModel}
+	\caption{Class diagram of PrimaryModel}
+	\label{PrimaryModel}
+\end{figure}
+
 The \PrimaryModel is used to link to a meta data file describing a primary model
-with current model. \fig{model_uml} provides its UML diagram.
+with current model. \fig{PrimaryModel} provides its UML diagram.
 
 \subsubsection{The \class{Reference} class}
-\begin{figure}
+\begin{figure}[h]
 	\includegraphics[scale=0.8]{img/Reference}
 	\caption{Class diagram of Reference}
 	\label{Reference}
@@ -290,7 +335,7 @@ the model. It involves the following attributes. All the attributes of the
 RIS specification format as described in \tab{reference-class-attributes}.
 \fig{Reference} provides its UML diagram.
 
-\begin{table}
+\begin{table}[h]
 	\begin{tabular}{|l|l|}
 		\hline
 		\textbf{Attribute} & \textbf{Description} \\
@@ -313,7 +358,7 @@ RIS specification format as described in \tab{reference-class-attributes}.
 	\label{reference-class-attributes}
 \end{table}
 
-\begin{example}
+\begin{example}[showstringspaces=false]
 <pmf:reference
   xmlns:pmf="http://www.sbml.org/sbml/level3/version1/pmf/version"
   AU="Baranyi, J" PY="1995" TI="Mathematics of predictive food microbiology"
@@ -321,7 +366,7 @@ RIS specification format as described in \tab{reference-class-attributes}.
 \end{example}
 
 \subsubsection{The \class{UnitTransformation} class}
-\begin{figure}
+\begin{figure}[h]
 	\includegraphics[scale=0.8]{img/UnitTransformation}
 	\caption{Class diagram of UnitTransformation}
 	\label{UnitTransformation}
@@ -331,8 +376,7 @@ RIS specification format as described in \tab{reference-class-attributes}.
 The \UnitTransformation further describes a \UnitDefinition with the optional
 attribute transformation, of type \primtype{string}, which holds the
 transformation of the \UnitDefinition. \fig{UnitTransformation} provides the
-UML diagram of its defintion. \fig{unitdefinition_uml} sports an example of
-\UnitTransformation.
+UML diagram of its definition. 
 
 \subsection{New \ListOf classes}
 The \Pmf package introduces new classes extending the \ListOf class. These
@@ -341,7 +385,7 @@ classes are derived from \SBase and inherit the attributes \token{metaid} and
 are not empty lists, the lists must contain at least one object. The list
 contain only one type of object.
 
-\begin{table}
+\begin{table}[h]
 	\begin{tabular}{|l|l|}
 		\hline
 		\textbf{\ListOf class} & \textbf{Contained class}\\
@@ -369,8 +413,14 @@ contain only one type of object.
 \end{itemize}
 
 \subsubsection{\class{Compartment}}
+\begin{figure}[h]
+	\includegraphics[scale=0.8]{img/Compartment}
+	\caption{Class diagram of extended \Compartment}
+	\label{Compartment}
+\end{figure}
+
 The \Compartment class is extended with one \CompartmentMetaData to hold extra
-meta data related to the compartment. \fig{compartment_uml} provides the UML
+meta data related to the compartment. \fig{Compartment} provides the UML
 diagram for the extension.
 
 \begin{example}
@@ -380,15 +430,15 @@ diagram for the extension.
 </compartment>
 \end{example}
 
-\begin{figure}
-	\includegraphics[scale=0.8]{img/compartment_uml}
-	\caption{Class diagram of extended \Compartment}
-	\label{compartment_uml}
+\subsubsection{\class{Model}}
+\begin{figure}[h]
+	\includegraphics[scale=0.6]{img/Model}
+	\caption{Class diagram of extended \Model}
+	\label{Model}
 \end{figure}
 
-\subsubsection{\class{Model}}
 The \Model class is extended with the optional lists \ListOfPrimaryModels,
-\ListOfDataSources and \ListOfPrimaryModels. \fig{model_uml} provides the UML
+\ListOfDataSources and \ListOfPrimaryModels. \fig{Model} provides the UML
 diagram for the extension.
 
 \begin{example}
@@ -407,13 +457,13 @@ diagram for the extension.
 </model>
 \end{example}
 
-\begin{figure}
-	\includegraphics[scale=0.6]{img/model_uml}
-	\caption{Class diagram of extended \Model}
-	\label{model_uml}
+\subsubsection{\class{Parameter}}
+\begin{figure}[h]
+	\includegraphics[scale=0.8]{img/Parameter}
+	\caption{Class diagram of extended \Parameter}
+	\label{Parameter}
 \end{figure}
 
-\subsubsection{\class{Parameter}}
 The \Parameter class is extended with one \ListOfCorrelations and one optional
 \ParameterMetaData.
 
@@ -427,16 +477,16 @@ The \Parameter class is extended with one \ListOfCorrelations and one optional
 </parameter>
 \end{example}
 
-\begin{figure}
-	\includegraphics[scale=0.7]{img/parameter_uml}
-	\caption{Class diagram of extended \Parameter}
-	\label{parameter_uml}
+\subsubsection{\class{Rule}}
+\begin{figure}[h]
+	\includegraphics[scale=0.8]{img/Rule}
+	\caption{Class diagram of extended \Rule}
+	\label{Rule}
 \end{figure}
 
-\subsubsection{\class{Rule}}
 The \Rule class is extended with a \ListOfReferences and one optional
 \RuleMetaData.
-\begin{example}
+\begin{example}[showstringspaces=false]
 <algebraicRule>
   <math xmlns="http://www.w3.org/1998/Math/MathML">
     <plus/>
@@ -448,15 +498,15 @@ The \Rule class is extended with a \ListOfReferences and one optional
 </algebraicRule>
 \end{example}
 
-\begin{figure}
-	\includegraphics[scale=0.7]{img/rule_uml}
-	\caption{Class diagram of extended \Rule}
-	\label{rule_uml}
+\subsubsection{\class{Species}}
+\begin{figure}[h]
+	\includegraphics[scale=0.9]{img/Species}
+	\caption{Class diagram of extended \Species}
+	\label{Species}
 \end{figure}
 
-\subsubsection{\class{Species}}
 The \Species class is extended with one optional \SpeciesMetaData.
-\begin{example}
+\begin{example}[showstringspaces=false]
 <species compartment="Culture_medium" boundaryCondition="false" constant="false"
   id="some_species" hasOnlySubstanceUnits="true">
   <pmf:speciesMetaData xmlns:pmf="http://www.sbml.org/sbml/level3/version1/pmf/version1"
@@ -465,13 +515,13 @@ The \Species class is extended with one optional \SpeciesMetaData.
 </species>
 \end{example}
 
-\begin{figure}
-	\includegraphics[scale=0.7]{img/species_uml}
-	\caption{Class diagram of extended \Species}
-	\label{species_uml}
+\subsubsection{\class{UnitDefinition}}
+\begin{figure}[h]
+	\includegraphics[scale=0.8]{img/UnitDefinition}
+	\caption{Class diagram of extended \UnitDefinition}
+	\label{UnitDefinition}
 \end{figure}
 
-\subsubsection{\class{UnitDefinition}}
 The \UnitTransformation class is extended with an optional \UnitTransformation.
 
 \begin{example}
@@ -480,9 +530,3 @@ The \UnitTransformation class is extended with an optional \UnitTransformation.
     name="ln" />
 </unitDefinition>
 \end{example}
-
-\begin{figure}
-	\includegraphics[scale=0.7]{img/unitdefinition_uml}
-	\caption{Class diagram of extended \UnitDefinition}
-	\label{unitdefinition_uml}
-\end{figure}
